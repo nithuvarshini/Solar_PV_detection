@@ -1,0 +1,174 @@
+Here is a `.gitignore` suited for the Solar PV Defect Detection project (Python + data/ML + Streamlit + Docker).  
+
+```gitignore
+# -------------------------------------------------
+# Python / general
+# -------------------------------------------------
+# Byte‑compiled / optimized / C extensions
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cython compiled files
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Pytest cache
+.pytest_cache/
+# MyPy cache
+.mypy_cache/
+# Type checking
+.pyre/
+# Linting cache
+.flake8
+ruff_cache/
+# StaticHere is a `.gitignore` suited for the Solar PV Defect Detection project (Python + data/ML + Streamlit + Docker).  
+
+```gitignore
+# -------------------------------------------------
+# Python / general
+# -------------------------------------------------
+# Byte‑compiled / optimized / C extensions
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cython compiled files
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Pytest cache
+.pytest_cache/
+# MyPy cache
+.mypy_cache/
+# Type checking
+.pyre/
+# Linting cache
+.flake8
+ruff_cache/
+# Static analysis
+.bandit
+
+# PyCharm / VS Code / IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.vscode/
+*.code-workspace
+*.iml
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+*.ipynb
+
+# -------------------------------------------------
+# Data / model artifacts (large, generated, or private)
+# -------------------------------------------------
+# Synthetic / raw dataset (can be regenerated)
+data/raw/
+# Real ELPV dataset (downloaded from Kaggle – large)
+data/elpv/
+# Processed data / intermediate files
+data/processed/
+# Model checkpoints and trained weights
+static/models/
+# Visualisation outputs
+static/visualizations/
+# Generated reports / PDFs
+*.pdf
+# Archive / zip of the project (avoid committing the built zip)
+*.zip
+
+# -------------------------------------------------
+# Environment / secrets
+# -------------------------------------------------
+# Virtual environment directories
+venv/
+.env/
+env/
+# Condaa environment files
+*.condaa/
+# Environment variable files
+.env*
+# Secrets / API keys
+kaggle.json
+*.key
+*.pem
+
+# -------------------------------------------------
+# Logs / runtime files
+# -------------------------------------------------
+*.log
+logs/
+*.out
+*.err
+
+# -------------------------------------------------
+# OS / editor specific
+# -------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.nfs*
+
+# -------------------------------------------------
+# Miscellaneous
+# -------------------------------------------------
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# End of .gitignore
+```
