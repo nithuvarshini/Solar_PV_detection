@@ -27,5 +27,5 @@ COPY . .
 EXPOSE 8000
 EXPOSE 8501
 
-# Default command: Start Streamlit App
-CMD ["streamlit", "run", "app/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Default command: Start FastAPI Production Server & Web UI
+CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "8000"]

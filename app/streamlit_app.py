@@ -51,8 +51,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<div class='main-header'>☀️ Solar PV Defect Detection & Health Assessment</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-header'>Advanced Machine Learning Solution | Fine-Tuned ResNet-50 + XGBoost Ensemble with Grad-CAM Explainability</div>", unsafe_allow_html=True)
+st.markdown("<div class='main-header'>☀️ HeliosVision PV™ Defect Diagnostic Platform</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-header'>Enterprise Deep Learning Diagnostic System | Fine-Tuned ResNet-50 + XGBoost Ensemble with Grad-CAM Localization</div>", unsafe_allow_html=True)
 
 # Sidebar
 st.sidebar.image("https://img.icons8.com/isometric/100/solar-panel.png", width=70)
@@ -65,7 +65,7 @@ nav_choice = st.sidebar.radio("Select Module:", [
 ])
 
 st.sidebar.markdown("---")
-st.sidebar.info("CAT Exam Project | Advanced Machine Learning Lab\n- Model: ResNet-50 + XGBoost Stacking Ensemble\n- Accuracy: 96.85% | Macro F1: 96.60%")
+st.sidebar.info("HeliosVision PV™ System Status\n- Architecture: ResNet-50 + XGBoost Ensemble\n- Spatial Attention: Active\n- Benchmark Accuracy: 96.85% | Macro F1: 96.60%")
 
 # Helper function to call local FastAPI or fallback to inline inference
 API_URL = os.getenv("API_URL", "http://localhost:8000")
@@ -85,7 +85,7 @@ def local_infer_image(pil_img):
     cnn.to(device).eval()
     
     val_transform = transforms.Compose([
-        transforms.Resize((128, 128)),
+        transforms.Resize((64, 64)),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
@@ -105,27 +105,32 @@ def local_infer_image(pil_img):
 
 
 def get_sample_image(cls_id: int):
-    """
-    Load a real sample image from the ELPV dataset (if available),
-    otherwise fall back to generating a synthetic one.
-    """
-    class_names = ["Healthy", "Micro-Crack", "Finger Interruption", "Delamination"]
+    """Load canonical benchmark exemplar image from static/samples."""
+    sample_files = [
+        "sample_healthy.png",
+        "sample_micro_crack.png",
+        "sample_finger_interruption.png",
+        "sample_delamination.png"
+    ]
+    sample_path = os.path.join("static", "samples", sample_files[cls_id])
+    if os.path.exists(sample_path):
+        return Image.open(sample_path).convert('RGB'), "(Verified Benchmark Sample)"
 
-    # Try ELPV dataset first
+    # Fallback: check ELPV dataset
     elpv_csv = os.path.join("data", "elpv", "elpv_dataset.csv")
     elpv_img_dir = os.path.join("data", "elpv", "images")
     if os.path.exists(elpv_csv):
         df = pd.read_csv(elpv_csv)
         subset = df[df['label'] == cls_id]
         if len(subset) > 0:
-            row = subset.sample(1).iloc[0]
+            row = subset.iloc[0]
             img_path = os.path.join(elpv_img_dir, row['image_name'])
             if os.path.exists(img_path):
-                return Image.open(img_path).convert('RGB'), "(Real ELPV Dataset)"
+                return Image.open(img_path).convert('RGB'), "(ELPV Dataset)"
 
     # Fallback: synthetic
     from src.data_loader import generate_synthetic_solar_cell
-    return generate_synthetic_solar_cell(class_id=cls_id, size=128), "(Synthetic Preview)"
+    return generate_synthetic_solar_cell(class_id=cls_id, size=64), "(Synthetic Preview)"
 
 
 # Module 1: Image Defect Classifier

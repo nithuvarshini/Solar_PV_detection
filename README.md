@@ -66,22 +66,45 @@ Solar_PV_Defect_Detection/
 
 ## ⚡ Quickstart Guide
 
-### 1. One-Step Pipeline Execution (Train, Evaluate, Plot & Report)
+### 📦 First-time Setup
+1. **Create a virtual environment** (optional but recommended)
+   ```bash
+   python -m venv venv
+   .\\venv\\Scripts\\activate   # PowerShell on Windows
+   ```
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Download & prepare the ELPV dataset** (requires Kaggle API credentials)
+   ```bash
+   python prepare_elpv.py
+   ```
+   This creates `data/elpv/elpv_dataset.csv` and extracts the images.
+
+### 🚀 Subsequent Runs – Full Pipeline (train, evaluate, visualise, report)
 ```bash
 python run_pipeline.py
 ```
 
-### 2. Launch Local FastAPI REST Microservice
-```bash
-uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
-```
-- Interactive Swagger API docs available at: `http://localhost:8000/docs`
+### 🔌 Optional services
+* **FastAPI REST microservice** – start the API server:
+  ```bash
+  uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
+  ```
+  Swagger UI → `http://localhost:8000/docs`
+* **Streamlit UI** – launch the interactive demo:
+  ```bash
+  streamlit run app/streamlit_app.py
+  ```
+  Browse → `http://localhost:8501`
 
-### 3. Launch Interactive Streamlit Web App
-```bash
-streamlit run app/streamlit_app.py
-```
-- Open browser at: http://localhost:8501
+### 🐳 Docker container
+* Build and run all services (FastAPI + Streamlit) in one command:
+  ```bash
+  docker-compose up --build -d
+  ```
+  Stop with `docker-compose down`.
 
 ### 4. Containerize with Docker
 ```bash
