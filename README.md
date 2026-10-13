@@ -1,13 +1,21 @@
-# Solar PV Defect Detection & Health Assessment ☀️🔍
+---
+title: HeliosVision PV - Solar Defect Diagnostic
+emoji: ☀️
+colorFrom: blue
+colorTo: slate
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
+# HeliosVision PV™ - Solar Cell Defect Detection & Diagnostic System ☀️🔍
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1-EE4C2C.svg)](https://pytorch.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688.svg)](https://fastapi.tiangolo.com/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.35-FF4B4B.svg)](https://streamlit.io/)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED.svg)](https://www.docker.com/)
 
-> **CAT Examination Project | Advanced Machine Learning Lab**  
-> An industrial-grade, multi-modal machine learning solution for real-time solar photovoltaic (PV) cell defect classification, health degradation assessment, and explainable AI diagnostic visualization.
+> An industrial-grade, multi-modal machine learning platform for real-time solar photovoltaic (PV) cell defect classification, health degradation assessment, and explainable AI diagnostic visualization.
 
 ---
 

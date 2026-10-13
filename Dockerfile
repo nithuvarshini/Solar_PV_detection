@@ -23,9 +23,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application source code
 COPY . .
 
-# Expose FastAPI and Streamlit ports
+# Expose ports: 7860 (Hugging Face Spaces), 8000 (FastAPI local), 8501 (Streamlit)
+EXPOSE 7860
 EXPOSE 8000
 EXPOSE 8501
 
-# Default command: Start FastAPI Production Server & Web UI
-CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "8000"]
+# Start FastAPI Production Server & Web UI (reads $PORT, defaults to 7860 for HF Spaces)
+CMD ["sh", "-c", "uvicorn app.api:app --host 0.0.0.0 --port ${PORT:-7860}"]
